@@ -18,7 +18,10 @@ public class Classifier {
 	File output;
 
 	Classifier(){
-		input = new File("./Data/input.csv");
+	}
+	
+	public void setInputFile(String filename){
+		input = new File(filename);
 		pages = new HashSet<WebPage>();
 
 		try {
@@ -35,6 +38,14 @@ public class Classifier {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	public void setInputPages(Set<WebPage> pages){
+		this.pages = pages;
+		for(WebPage p:this.pages){
+			p.getPageContents();
+			p.getTaggedBody();
 		}
 	}
 	

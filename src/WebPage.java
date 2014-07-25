@@ -51,7 +51,7 @@ public class WebPage {
 				Document doc = Jsoup.connect(this.url).userAgent(IE).timeout(5000).get();
 				// get page title
 				this.title = doc.title();
-				this.body = doc.select("body p");
+				this.body = doc.select("p");
 			} catch (HttpStatusException e){
 //				e.printStackTrace();
 				title = "[Scraping] Error";
